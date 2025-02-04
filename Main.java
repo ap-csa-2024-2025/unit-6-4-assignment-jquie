@@ -5,7 +5,12 @@ public class Main
   public static void main(String[] args)
   {
     String[] foo = {"aac", "abc", "bed", "cat", "bb", "d"};
-   System.out.println(countLength(foo, 3));    
+    int[] array = {1, 2, 3, 4, 2, 5, 2, 87, 2, 1, 5, 7};
+    double[] list = {1.3, 2.6, 2.8, 2.4, 7963.2, 42.4};
+   System.out.println(countLength(foo, 3)); 
+   System.out.println(indexOf(list, 2.4));
+   System.out.println(hasDuplicates(array));  
+   System.out.println(findMode(array));  
   }
 
   public static int countLength(String[] arr, int targetLength)
@@ -23,7 +28,7 @@ public class Main
 
   public static int indexOf(double[] arr, double target)
   {
-    for (int i = 0; i , arr.length; i++)
+    for (int i = 0; i < arr.length; i++)
     {
       if(arr[i] == target)
       {
@@ -35,13 +40,42 @@ public class Main
 
   public static boolean hasDuplicates(int[] arr)
   {
-    // replace with your code
+    for (int i = 0; i < arr.length; i++)
+    {
+      int target = arr[i];
+      for (int j = i+1; j < arr.length; j++)
+      {
+        if (target == arr[j])
+        {
+          return true;
+        }
+      }
+    }
     return false;
   }
 
-  public static String findMode(String[] arr)
+  public static int findMode(int[] arr)
   {
-    // replace with your code
-    return null;
+    int count = 0;
+    int mode = arr[0];
+    int maxCount = 0;
+    for (int i = 0; i < arr.length; i++)
+    {
+      int target = arr[i];
+      count = 0;
+      for (int j = 0; j < arr.length; j++)
+      {
+        if (target == arr[j])
+        {
+          count++;
+        }
+      }
+      if (maxCount < count)
+      {
+        maxCount = count;
+        mode = arr[i];
+      }
+    }
+    return mode;
   }
 }
